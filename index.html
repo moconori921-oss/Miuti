@@ -3,613 +3,552 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>A10 Duo 絶対攻略｜Slay the Spire 2</title>
-<meta name="description" content="Slay the Spire 2 A10 Duo攻略。アイアンクラッド、サイレント、リージェント、ショップ、イベント、エリート、コンボ、ルート判断を実戦向けに集約。">
+<meta name="description" content="Slay the Spire 2 A10 Duo攻略。キャラ別デッキ構築、カードTier、コンボ、ショップ、イベント、アンシェント、電気エビ、エリート判断、二連ボス対策まで。">
 <style>
 :root{
-  --bg:#0b0f14; --panel:#121821; --panel2:#171f2a; --text:#e9eef5; --muted:#9eacbd;
-  --line:#263241; --accent:#e6b85c; --accent2:#7fc8ff; --good:#7ddc9a; --warn:#ffcf70; --bad:#ff8181;
-  --shadow:0 10px 30px rgba(0,0,0,.25);
+  --bg:#090d12;--bg2:#0d141c;--panel:#121922;--panel2:#171f2a;--text:#edf2f7;--muted:#a6b2c1;
+  --line:#283545;--accent:#e7b95e;--accent2:#7ec9ff;--good:#7ddc9a;--warn:#ffd071;--bad:#ff8585;
+  --s:#ffe27a;--a:#91e2aa;--b:#9fd7ff;--c:#c6b6ff;--shadow:0 12px 34px rgba(0,0,0,.28)
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Sans","Yu Gothic UI",sans-serif;
-  background:linear-gradient(180deg,#090d12,#0e141c 40%,#0b0f14); color:var(--text); line-height:1.72;
+  margin:0;background:linear-gradient(180deg,#080c11,#0d141c 38%,#090d12);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Sans","Yu Gothic UI",sans-serif;
+  line-height:1.7
 }
 a{color:var(--accent2);text-decoration:none}
 a:hover{text-decoration:underline}
 header{
-  position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  border-bottom:1px solid var(--line);
   background:
-    radial-gradient(circle at 15% 10%,rgba(230,184,92,.16),transparent 35%),
-    radial-gradient(circle at 80% 0%,rgba(127,200,255,.12),transparent 32%),
-    #0d131b;
+    radial-gradient(circle at 12% 10%,rgba(231,185,94,.15),transparent 34%),
+    radial-gradient(circle at 82% 0%,rgba(126,201,255,.11),transparent 32%),
+    #0c1219
 }
-.hero{max-width:1180px;margin:auto;padding:58px 22px 44px}
-.eyebrow{letter-spacing:.14em;color:var(--accent);font-size:.82rem;font-weight:800}
-h1{font-size:clamp(2rem,5vw,4.25rem);line-height:1.06;margin:.2em 0 .22em}
-.subtitle{max-width:860px;color:var(--muted);font-size:1.06rem}
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-.badge{border:1px solid var(--line);background:#111925;border-radius:999px;padding:7px 11px;color:#cbd7e5;font-size:.86rem}
-.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:26px;max-width:1280px;margin:auto;padding:26px 20px 72px}
-nav{
-  position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;
-  background:rgba(18,24,33,.94);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow)
+.hero{max-width:1240px;margin:auto;padding:54px 20px 36px}
+.eyebrow{color:var(--accent);letter-spacing:.14em;font-weight:900;font-size:.8rem}
+h1{font-size:clamp(2.1rem,5vw,4.3rem);line-height:1.04;margin:.16em 0 .22em}
+.subtitle{color:var(--muted);max-width:900px;font-size:1.05rem}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.badge{border:1px solid var(--line);background:#111923;border-radius:999px;padding:7px 11px;font-size:.84rem;color:#cbd6e2}
+.topbar{
+  position:sticky;top:0;z-index:60;background:rgba(9,13,18,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)
 }
-nav .nav-title{font-weight:800;margin:3px 7px 10px;color:#fff}
-nav a{display:block;padding:8px 9px;border-radius:9px;color:#bfcbd8;font-size:.92rem}
-nav a:hover{background:#1a2330;text-decoration:none;color:#fff}
+.topbar-inner{max-width:1240px;margin:auto;padding:8px 14px;display:flex;gap:8px;align-items:center}
+.chapter-scroll{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex:1}
+.chapter-scroll::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;border:1px solid var(--line);background:#121923;color:#cbd6e2;border-radius:999px;
+  padding:7px 10px;font-size:.82rem;font-weight:700
+}
+.chip:hover{background:#1a2430;text-decoration:none;color:white}
+#search{min-width:220px;max-width:340px;width:26vw;padding:9px 11px;border-radius:10px;border:1px solid var(--line);background:#111821;color:white}
+.shell{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;max-width:1280px;margin:auto;padding:24px 18px 72px}
+aside{
+  position:sticky;top:64px;align-self:start;max-height:calc(100vh - 84px);overflow:auto;
+  background:rgba(18,25,34,.95);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)
+}
+aside h3{margin:3px 7px 9px;font-size:1rem}
+aside a{display:block;padding:7px 8px;border-radius:8px;color:#bdcad8;font-size:.89rem}
+aside a:hover{background:#1a2330;text-decoration:none;color:white}
 main{min-width:0}
 section{
-  scroll-margin-top:20px;background:rgba(18,24,33,.93);border:1px solid var(--line);
+  scroll-margin-top:72px;background:rgba(18,25,34,.95);border:1px solid var(--line);
   border-radius:18px;padding:26px;margin-bottom:20px;box-shadow:var(--shadow)
 }
-h2{font-size:1.75rem;margin:.1em 0 .7em;border-bottom:1px solid var(--line);padding-bottom:10px}
-h3{font-size:1.25rem;margin:1.35em 0 .45em;color:#f5f7fa}
-h4{font-size:1.03rem;margin:1.1em 0 .35em;color:#d8e1eb}
+h2{font-size:1.72rem;margin:.05em 0 .7em;padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font-size:1.23rem;margin:1.35em 0 .5em;color:#f8fafc}
+h4{font-size:1.02rem;margin:1.05em 0 .4em;color:#dde6ef}
 p{margin:.55em 0 1em}
 ul,ol{padding-left:1.25rem}
-li{margin:.28em 0}
-strong{color:#fff}
-.callout{
-  border-left:4px solid var(--accent);background:#171d25;padding:14px 16px;border-radius:10px;margin:14px 0
+li{margin:.27em 0}
+strong{color:white}
+.subnav{display:flex;flex-wrap:wrap;gap:7px;margin:-2px 0 18px}
+.subnav a{
+  border:1px solid var(--line);background:#141c26;border-radius:9px;padding:6px 9px;font-size:.82rem;color:#c7d2de
 }
-.good{border-left-color:var(--good)}
-.warn{border-left-color:var(--warn)}
-.bad{border-left-color:var(--bad)}
+.subnav a:hover{background:#1c2632;text-decoration:none;color:white}
+.callout{border-left:4px solid var(--accent);background:#171d25;padding:14px 16px;border-radius:10px;margin:14px 0}
+.callout.good{border-left-color:var(--good)} .callout.warn{border-left-color:var(--warn)} .callout.bad{border-left-color:var(--bad)}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.card{
-  background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:16px
-}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:16px}
 .card h3,.card h4{margin-top:0}
-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.94rem}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.93rem}
 th,td{border-bottom:1px solid var(--line);padding:10px 9px;text-align:left;vertical-align:top}
-th{color:#fff;background:#151d27;position:sticky;top:0}
+th{background:#151d27;color:white}
 .tier{font-weight:900;white-space:nowrap}
-.splus{color:#ffdf74}.s{color:#8fe7a8}.a{color:#9dd9ff}.b{color:#c9b8ff}.c{color:#c5c5c5}
-.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
-.kpi div{background:#151c25;border:1px solid var(--line);padding:14px;border-radius:12px}
-.kpi b{display:block;font-size:1.25rem;color:#fff}
-.small{font-size:.88rem;color:var(--muted)}
+.splus{color:var(--s)} .s{color:var(--a)} .a{color:var(--b)} .b{color:var(--c)} .muted{color:var(--muted)}
+.mobile-tier{display:none}
+.tier-card{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:14px;margin:10px 0}
+.tier-card .row{display:flex;justify-content:space-between;gap:12px}
+.tier-card .name{font-weight:850;color:white}
+.tier-card .why{color:#d1dae4;margin-top:6px;font-size:.93rem}
+.tier-card .note{color:var(--muted);margin-top:4px;font-size:.84rem}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0}
+.kpi>div{background:#151c25;border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi b{display:block;font-size:1.2rem}
+details{background:#131a23;border:1px solid var(--line);border-radius:12px;padding:10px 13px;margin:9px 0}
+summary{cursor:pointer;font-weight:800}
+.backtop{display:inline-block;margin-top:12px;font-size:.83rem;color:var(--muted)}
 hr{border:0;border-top:1px solid var(--line);margin:24px 0}
-details{background:#131a23;border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin:10px 0}
-summary{cursor:pointer;font-weight:750}
-#searchWrap{
-  max-width:1280px;margin:18px auto 0;padding:0 20px;
-}
-#search{
-  width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#111821;color:#fff;font-size:1rem;outline:none
-}
-#search:focus{border-color:#577fa3;box-shadow:0 0 0 3px rgba(127,200,255,.09)}
-mark{background:#6a541f;color:#fff;padding:0 .1em;border-radius:2px}
-footer{max-width:1180px;margin:auto;padding:0 20px 55px;color:var(--muted);font-size:.86rem}
-.mobile-toc{display:none}
-@media(max-width:900px){
-  .layout{grid-template-columns:1fr;padding-top:14px}
-  nav{display:none}
-  .mobile-toc{display:block;margin:0 0 16px}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+pre{white-space:pre-wrap;background:#0f151d;border:1px solid var(--line);padding:13px;border-radius:11px;color:#dbe5ef}
+footer{max-width:1200px;margin:auto;padding:0 18px 50px;color:var(--muted);font-size:.85rem}
+.hidden{display:none!important}
+@media(max-width:940px){
+  .shell{grid-template-columns:1fr;padding:14px 10px 64px}
+  aside{display:none}
+  section{padding:18px 15px;border-radius:14px}
   .grid2,.grid3,.kpi{grid-template-columns:1fr}
-  section{padding:20px}
-  .hero{padding-top:42px}
+  .desktop-table{display:none}
+  .mobile-tier{display:block}
+  .topbar-inner{padding:7px 8px;display:block}
+  .chapter-scroll{margin-bottom:7px}
+  #search{width:100%;max-width:none;min-width:0}
+  h2{font-size:1.42rem}
+  h3{font-size:1.12rem}
+  .hero{padding:40px 15px 28px}
+  .subnav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .subnav::-webkit-scrollbar{display:none}
+  .subnav a{flex:0 0 auto}
 }
 @media print{
-  body{background:#fff;color:#111}
-  header,section{background:#fff;color:#111;box-shadow:none}
-  nav,#searchWrap,.mobile-toc{display:none!important}
-  .layout{display:block;max-width:none}
+  .topbar,aside{display:none}
+  body,header,section{background:white;color:#111;box-shadow:none}
+  .shell{display:block;max-width:none}
   section{break-inside:avoid;border-color:#ccc}
   strong,h2,h3,h4{color:#111}
 }
 </style>
 </head>
-<body>
+<body id="top">
 <header>
   <div class="hero">
     <div class="eyebrow">SLAY THE SPIRE 2 / A10 DUO</div>
     <h1>A10 Duo 絶対攻略</h1>
-    <p class="subtitle">カード選択、Duoコンボ、ショップ、イベント、エリート判断までを「次の1勝を取りに行く」ための実戦基準に落とし込んだ攻略サイト。アイアンクラッド、サイレント、リージェント中心。</p>
+    <p class="subtitle">A10二連ボス突破を目的に、キャラ別の理想デッキ、カード評価、Duoコンボ、ショップ、イベント、アンシェント、電気エビ、エリート判断までを整理した実戦用ガイド。</p>
     <div class="badges">
-      <span class="badge">A10：Act3ダブルボス</span>
-      <span class="badge">Duo：共有デバフを最大活用</span>
-      <span class="badge">日本語カード名</span>
-      <span class="badge">実戦判断重視</span>
+      <span class="badge">A10二連ボス基準</span><span class="badge">Duo専用評価</span><span class="badge">日本語カード名</span><span class="badge">モバイル対応</span>
     </div>
   </div>
 </header>
 
-<div id="searchWrap">
-  <input id="search" type="search" placeholder="カード名・敵名・イベント名を検索（例：身震い、専制、エントマンサー）">
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="chapter-scroll">
+      <a class="chip" href="#principles">基本</a>
+      <a class="chip" href="#characters">キャラ別</a>
+      <a class="chip" href="#ironclad">アイクラ</a>
+      <a class="chip" href="#silent">サイレント</a>
+      <a class="chip" href="#regent">リージェント</a>
+      <a class="chip" href="#pairing">ペア別</a>
+      <a class="chip" href="#colorless">無色</a>
+      <a class="chip" href="#shop">ショップ</a>
+      <a class="chip" href="#events">イベント</a>
+      <a class="chip" href="#ancients">アンシェント</a>
+      <a class="chip" href="#elites">エリート</a>
+      <a class="chip" href="#bosses">二連ボス</a>
+    </div>
+    <input id="search" type="search" placeholder="カード・敵・イベントを検索">
+  </div>
 </div>
 
-<div class="layout">
-<nav>
-  <div class="nav-title">目次</div>
-  <a href="#core">A10 Duoの原則</a>
-  <a href="#pairs">ペア構成</a>
-  <a href="#ic-silent">アイクラ＋サイレント</a>
-  <a href="#double-ic">ダブルアイクラ</a>
-  <a href="#double-silent">ダブルサイレント</a>
-  <a href="#ic-regent">アイクラ＋リージェント</a>
-  <a href="#regent-tier">リージェントカード評価</a>
-  <a href="#colorless">無色カード評価</a>
-  <a href="#shop">ショップ・ゴールド管理</a>
-  <a href="#events">重要「？」イベント</a>
-  <a href="#ancients">アンシェント報酬</a>
-  <a href="#shrimp">電気エビ</a>
-  <a href="#elites">要注意エリート</a>
-  <a href="#elite-route">エリート踏む判断</a>
-  <a href="#turn">Duoのターン進行</a>
-  <a href="#checklist">最終チェックリスト</a>
-</nav>
+<div class="shell">
+<aside>
+  <h3>章</h3>
+  <a href="#principles">1. A10 Duoの原則</a>
+  <a href="#characters">2. キャラ別の理想デッキ</a>
+  <a href="#ironclad">3. アイアンクラッド</a>
+  <a href="#silent">4. サイレント</a>
+  <a href="#regent">5. リージェント</a>
+  <a href="#pairing">6. ペア別運用</a>
+  <a href="#colorless">7. 無色カード</a>
+  <a href="#shop">8. ショップ・ゴールド</a>
+  <a href="#events">9. 重要イベント</a>
+  <a href="#ancients">10. アンシェント・電気エビ</a>
+  <a href="#elites">11. エリート</a>
+  <a href="#bosses">12. 二連ボス</a>
+  <a href="#turnflow">13. Duoターン進行</a>
+</aside>
 
 <main>
-<details class="mobile-toc">
-  <summary>目次を開く</summary>
-  <p><a href="#core">A10 Duoの原則</a> / <a href="#pairs">ペア構成</a> / <a href="#ic-silent">アイクラ＋サイレント</a> / <a href="#double-ic">ダブルアイクラ</a> / <a href="#double-silent">ダブルサイレント</a> / <a href="#ic-regent">アイクラ＋リージェント</a> / <a href="#shop">ショップ</a> / <a href="#events">イベント</a> / <a href="#ancients">アンシェント</a> / <a href="#shrimp">電気エビ</a> / <a href="#elites">エリート</a></p>
-</details>
 
-<section id="core">
-<h2>A10 Duoの原則</h2>
-<div class="callout good"><strong>最重要：</strong>Duo専用の大コンボを完成させることより、まず「二人とも単独で機能する強いデッキ」を作る。Duoカードはその上に載せる増幅器。</div>
+<section id="principles">
+<h2>1. A10 Duoの原則</h2>
+<div class="subnav">
+  <a href="#p-win">勝ち筋</a><a href="#p-act">Act別</a><a href="#p-boss">二連ボス思考</a>
+</div>
+<div id="p-win" class="callout good"><strong>最重要：</strong>Duo専用の大コンボより、まず二人とも単独で動く強いデッキを作る。Duoカードは増幅器。</div>
 <div class="grid2">
-  <div class="card"><h3>勝率を落とす4要因</h3><ol><li>相方依存の未完成デッキ</li><li>Act1から二人ともスケーリング・支援寄り</li><li>弱体・脆弱・筋力低下・ポーションを共有資産として使えていない</li><li>A10二連ボスに対し立ち上がりが遅い</li></ol></div>
-  <div class="card"><h3>強いDuoの共通点</h3><ul><li>各自に自己防御がある</li><li>Act1から火力を出せる</li><li>共有デバフを切らさない</li><li>特定Rareがなくても動く</li><li>1～2周目に勝ち筋が始動する</li></ul></div>
+  <div class="card"><h3>負け筋</h3><ol><li>相方依存の未完成デッキ</li><li>二人ともセットアップ型</li><li>共有デバフを活かせていない</li><li>第一ボスでHPを使い切る</li></ol></div>
+  <div class="card"><h3>勝つデッキ</h3><ul><li>各自で自己防御可能</li><li>Act1から火力あり</li><li>1～2周目にエンジン始動</li><li>初手事故への回答あり</li><li>第一ボスを低損害で倒せる</li></ul></div>
 </div>
-<div class="kpi">
-  <div><b>Act1</b><span class="small">床を作る</span></div>
-  <div><b>Act2</b><span class="small">敵別回答を揃える</span></div>
-  <div><b>Act3</b><span class="small">二連ボスを2回立ち上げる</span></div>
-  <div><b>A10</b><span class="small">最大出力より最低出力</span></div>
+<div id="p-act" class="kpi">
+  <div><b>Act1</b><span class="muted">床を作る</span></div>
+  <div><b>Act2</b><span class="muted">敵別回答</span></div>
+  <div><b>Act3</b><span class="muted">初動を磨く</span></div>
+  <div><b>A10</b><span class="muted">二回立ち上げる</span></div>
 </div>
-<h3>A10で特に重い要素</h3>
-<ul>
-<li>A3：ゴールド獲得量低下</li>
-<li>A4：ポーションスロット減少</li>
-<li>A5：呪い追加</li>
-<li>A6：ショップ削除費用上昇</li>
-<li>A7：Rare・強化済みカード出現率低下</li>
-<li>A8/A9：敵耐久・攻撃激化</li>
-<li>A10：Act3最後に異なるボスを2体連続で戦う</li>
-</ul>
-<div class="callout warn">第一ボスでPower・Strength・Dexterity等の戦闘状態はリセットされるが、HPとポーションは持ち越す。したがって「一戦だけ完成すれば強い」では足りない。</div>
+<div id="p-boss" class="callout warn"><strong>二連ボスでは最大出力より再現性。</strong>Powerを3～4枚置かないと動かない構成、第一ボスに30～40HP払う構成は第二戦で破綻しやすい。</div>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
-<section id="pairs">
-<h2>ペア構成の考え方</h2>
-<table>
-<thead><tr><th>ペア</th><th>強み</th><th>最大の弱点</th><th>基本方針</th></tr></thead>
+<section id="characters">
+<h2>2. キャラ別の理想デッキ</h2>
+<div class="subnav">
+  <a href="#char-ic">アイクラ</a><a href="#char-silent">サイレント</a><a href="#char-regent">リージェント</a>
+</div>
+<table class="desktop-table">
+<thead><tr><th>キャラ</th><th>A10 Duoで目指す形</th><th>主な役割</th><th>避けたい形</th></tr></thead>
 <tbody>
-<tr><td><strong>アイクラ＋サイレント</strong></td><td>脆弱＋脱力、挟撃、大火力</td><td>二人ともセットアップ化すると遅い</td><td>サイレントが制御、アイクラが決着</td></tr>
-<tr><td><strong>ダブルアイクラ</strong></td><td>脆弱共有、高打点、序盤強い</td><td>脱力不足</td><td>一人テンポ、一人制御/廃棄</td></tr>
-<tr><td><strong>ダブルサイレント</strong></td><td>筋力低下・毒・多段の上限</td><td>Act1火力不足</td><td>一人frontload、一人制御/毒</td></tr>
-<tr><td><strong>アイクラ＋リージェント</strong></td><td>アイクラが序盤を支え、リージェントが後半を壊す</td><td>リージェントの星収支と引き順</td><td>アイクラfrontload、リージェント制御＋星</td></tr>
-</tbody>
-</table>
+<tr id="char-ic"><td><strong>アイアンクラッド</strong></td><td>高回転バースト＋最低限の大Block</td><td>脆弱、frontload、フィニッシュ</td><td>Attack過多、Power待ち、二人とも自傷</td></tr>
+<tr id="char-silent"><td><strong>サイレント</strong></td><td>敵火力低下＋手札制御＋少量継続火力</td><td>筋力低下、Weak、保留、同期</td><td>完全サポート、防御過多、毒/ナイフ未完成</td></tr>
+<tr id="char-regent"><td><strong>リージェント</strong></td><td>安定した星経済＋高効率防御＋少数Attack</td><td>脱力、星、Block、中長期</td><td>星消費過多、セットアップ過多</td></tr>
+</tbody></table>
+<div class="mobile-tier">
+  <div class="tier-card"><div class="row"><span class="name">アイアンクラッド</span><span class="tag splus">高回転バースト</span></div><div class="why">少数の強Attackをドロー・エナジーで何度も引く。大Blockを3～5枚確保。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">サイレント</span><span class="tag splus">制御＋同期</span></div><div class="why">金切り声・不快感・用意周到で敵と相方のターンを整え、毒など少量の独立火力を持つ。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">リージェント</span><span class="tag splus">星ミッドレンジ</span></div><div class="why">星を第二エナジーとしてBlockへ回し、通常エナジーをAttack/Powerへ使う。</div></div>
+</div>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
-<section id="ic-silent">
-<h2>アイクラ＋サイレント</h2>
-<div class="grid2">
-<div class="card">
-<h3>アイアンクラッド優先</h3>
-<p><span class="tier splus">S+</span> 供物 / ポンメルストライク / 身震い</p>
-<p><span class="tier s">S</span> バトルトランス / 瀉血 / 血の壁 / 焦熱の契約 / 鬼火 / アッパーカット</p>
-<p><span class="tier a">A+</span> 受け流し / 旋風刃</p>
-<p><span class="tier s">条件S</span> 闇の抱擁 / 無痛 / 威圧</p>
+<section id="ironclad">
+<h2>3. アイアンクラッド</h2>
+<div class="subnav">
+  <a href="#ic-build">理想デッキ</a><a href="#ic-tier">カード評価</a><a href="#ic-combo">コンボ</a><a href="#ic-traps">罠</a>
 </div>
-<div class="card">
-<h3>サイレント優先</h3>
-<p><span class="tier splus">S+</span> 金切り声 / 不快感 / 足払い / 挟撃 / 用意周到 / アドレナリン</p>
-<p><span class="tier s">S</span> バックフリップ / 暴露 / イカサマ</p>
-<p><span class="tier a">A+</span> 残像 / 有毒ガス</p>
-<p><span class="tier s">条件S+</span> 促進剤（毒成立後）</p>
-</div>
-</div>
-<h3>基本コンボ</h3>
-<ol>
-<li><strong>身震い → 挟撃 → 大型Attack</strong>：脆弱×挟撃でアイクラの一撃を極端に増幅。</li>
-<li><strong>金切り声 → アイクラ完全攻撃</strong>：敵多段をまとめて弱め、アイクラの防御エナジーを攻撃へ変換。</li>
-<li><strong>不快感 → 長期戦</strong>：サイレントが敵DPSそのものを下げ、アイクラの筋力・廃棄セットアップ時間を作る。</li>
-<li><strong>用意周到＋挟撃</strong>：挟撃をアイクラの鬼火・脳天割り等が来るまで保持。</li>
-<li><strong>タッグチーム → 大型Attack</strong>：小Attackで消費しない。</li>
-</ol>
-<div class="callout bad"><strong>罠：</strong>アイクラがPower/廃棄完成待ち、サイレントもFootwork/毒Power完成待ちになると、Turn1～2に敵HPが減らずA10で破綻する。</div>
-</section>
 
-<section id="double-ic">
-<h2>ダブルアイクラ</h2>
-<p>最も再現性が高いDuoの一つ。二人で脆弱を共有し、高効率Attackを押し付ける。</p>
-<h3>評価が上がるカード</h3>
-<ul>
-<li><strong>身震い：</strong>一人が脆弱担当へ寄せ、もう一人はAttack密度を上げてもよい。</li>
-<li><strong>ごろつき：</strong>二人で弱体を積めるため火力上限が高い。</li>
-<li><strong>ポンメルストライク：</strong>ダブルアイクラ最大の弱点であるデッキ操作不足を補う。</li>
-<li><strong>供物：</strong>両者で強いが、二人とも自傷過多にしない。</li>
-<li><strong>衝撃波（無色）：</strong>不足する脱力を一枚で補う最重要候補。</li>
-</ul>
-<h3>おすすめ役割分担</h3>
-<div class="grid2">
-<div class="card"><h4>A：テンポ</h4><p>身震い、ポンメルストライク、旋風刃、ごろつき、脳天割り、供物、瀉血。</p></div>
-<div class="card"><h4>B：制御＋後半</h4><p>身震い、アッパーカット、衝撃波、焦熱の契約、無痛、闇の抱擁、鬼火、威圧。</p></div>
-</div>
-<div class="callout bad"><strong>避ける：</strong>二人ともバリケード、二人とも廃棄Power先行、二人とも自傷型。</div>
-</section>
+<h3 id="ic-build">理想デッキ：高回転バースト＋最低限の大Block</h3>
+<p>20～25枚程度なら、主力Attack 4～6、脆弱1～2、Block 3～5、ドロー4～6、エナジー1～3、Power1～3、廃棄/圧縮2～4が目安。</p>
+<div class="callout"><strong>考え方：</strong>強いAttackを大量に入れるのではなく、ポンメルストライク・供物・バトルトランス・焦熱の契約で<strong>強いAttackを何度も引く</strong>。</div>
 
-<section id="double-silent">
-<h2>ダブルサイレント</h2>
-<p>Act1火力不足が最大の壁。そこを越えると、筋力低下と毒の共有で非常に強い。</p>
-<h3>重要カード</h3>
-<ul>
-<li><strong>金切り声：</strong>二人分の被害をまとめて軽減。2枚以上でも価値が高い。</li>
-<li><strong>不快感：</strong>長期戦の敵火力を恒久的に壊す。</li>
-<li><strong>有毒ガス＋促進剤：</strong>毒付与担当と増幅担当を分けられる。</li>
-<li><strong>挟撃：</strong>相方がナイフ・多段Attack型なら高評価。二人とも毒特化なら優先度低下。</li>
-</ul>
-<h3>役割分担</h3>
-<div class="grid2">
-<div class="card"><h4>A：前半・Attack寄り</h4><p>リーディングストライク、五月雨ダガー、暴露、ナイフ、金切り声、バックフリップ。</p></div>
-<div class="card"><h4>B：制御・長期戦</h4><p>金切り声、不快感、足払い、有毒ガス、促進剤、用意周到。</p></div>
-</div>
-<div class="callout warn"><strong>Act1では防御を取りすぎない。</strong>完璧に守れても敵が死なない構成が最も危険。強い無色Attackの購入価値も高い。</div>
-</section>
-
-<section id="ic-regent">
-<h2>アイクラ＋リージェント</h2>
-<div class="callout good"><strong>役割：</strong>アイクラがAct1の火力・脆弱を担当し、リージェントが脱力・星・防御・後半スケーリングを担当する。</div>
-<h3>基本連携</h3>
-<ol>
-<li><strong>落星 → 身震い → 全力Attack</strong>：脱力＋弱体＋脆弱を二人で完成。</li>
-<li><strong>リージェント低コスト防御 → アイクラ完全攻撃</strong>：星を第二エナジーとして使う。</li>
-<li><strong>星座 → アイクラ</strong>：ドロー＋エナジー＋Blockで大技ターンを成立。</li>
-<li><strong>教示 → アイクラの鬼火/供物/身震い</strong>：必要札を直接サーチ。</li>
-<li><strong>策謀 → 次ターン爆発</strong>：二人とも追加ドローでPower＋Attack展開。</li>
-<li><strong>お前を信じる → リージェント</strong>：星はあるが通常エナジーが足りないターンを解決。</li>
-<li><strong>ハンマータイム＋鍛造</strong>：鍛造源が十分ある場合のみ条件S。</li>
-<li><strong>リージェント弱体 → ごろつき</strong>：弱体スタックをアイクラ火力へ変換。</li>
-</ol>
-<h3>最大の罠</h3>
-<p>アイクラが闇の抱擁・無痛・悪魔化、リージェントが武器庫・スペクトラムシフト・虚無化、と<strong>両者セットアップ型</strong>になること。Turn1に敵HPが減らない。</p>
-</section>
-
-<section id="regent-tier">
-<h2>リージェント：カード評価</h2>
-<table>
-<thead><tr><th>Tier</th><th>カード</th><th>評価理由</th></tr></thead>
+<h3 id="ic-tier">カード評価：A10 Duo / 二連ボス基準</h3>
+<table class="desktop-table">
+<thead><tr><th>Tier</th><th>カード</th><th>理由</th></tr></thead>
 <tbody>
-<tr><td class="tier splus">S+</td><td><strong>専制</strong></td><td>毎ターンドロー＋不要札廃棄。星生成/消費の引き順事故を大幅に減らす。強化で天賦。</td></tr>
-<tr><td class="tier splus">S+</td><td><strong>反射</strong></td><td>高効率Block＋反射ダメージ。星供給が成立していれば最優先級。</td></tr>
-<tr><td class="tier splus">S+</td><td><strong>粒子障壁</strong></td><td>星をBlockへ変換し通常エナジーを温存。星余剰型で特に強い。</td></tr>
-<tr><td class="tier splus">S+</td><td><strong>星の外套</strong></td><td>0エナジーで守れる。序盤から腐りにくい。</td></tr>
-<tr><td class="tier s">S</td><td><strong>光の集約</strong></td><td>今のBlock＋次ターン以降の星準備を同時に行う。</td></tr>
-<tr><td class="tier s">S</td><td><strong>身の程を知れ</strong></td><td>0コストで仕事をし、星・通常エナジーを温存。</td></tr>
-<tr><td class="tier s">S</td><td><strong>落星</strong></td><td>脱力＋弱体。アイクラと組むと防御面の核。</td></tr>
-<tr><td class="tier s">S</td><td><strong>突撃せよ！</strong></td><td>弱い基本札や状態異常を戦闘中に火力化。</td></tr>
-<tr><td class="tier s">S</td><td><strong>フォトンカット</strong></td><td>Attack＋ドロー＋山札操作。星カードの順番を整える。</td></tr>
-<tr><td class="tier s">S</td><td><strong>煌めく激流</strong></td><td>今＋次ターンのBlock。星を使わないのが重要。</td></tr>
-<tr><td class="tier s">S</td><td><strong>星の巡り</strong></td><td>余った星を通常エナジーへ変換。</td></tr>
-<tr><td class="tier s">条件S</td><td><strong>ロイヤルギャンブル</strong></td><td>5星が必要。生成が十分なら大きな星純増。</td></tr>
-<tr><td class="tier s">条件S+</td><td><strong>虚無化</strong></td><td>次ターン以降の高コスト札踏み倒し。ただし置いたターン終了が最大リスク。</td></tr>
-<tr><td class="tier s">条件S+</td><td><strong>武器庫</strong></td><td>生成のたび筋力。クエーサー/スペクトラムシフト等が既にある時。</td></tr>
-<tr><td class="tier s">条件S</td><td><strong>クエーサー</strong></td><td>無色生成。生成シナジー成立時に急上昇。</td></tr>
-<tr><td class="tier a">A～S</td><td><strong>星霊の波動</strong></td><td>Act1 AoEとして優秀。筋力とも好相性。</td></tr>
-<tr><td class="tier a">A～S</td><td><strong>衝突軌道</strong></td><td>0コスト高打点。Act1 frontload補強。後半はデブリ処理が必要。</td></tr>
-<tr><td class="tier a">A～S</td><td><strong>ノックアウト</strong></td><td>Act1エリート向け。弱体条件を作りやすい。</td></tr>
-</tbody>
-</table>
-<h3>星の収支ルール</h3>
-<div class="callout warn"><strong>「星カードの枚数」ではなく「山札一周で何スター作れて何スター使うか」で考える。</strong>生成5しかないのに反射3＋粒子障壁3＋星霊の波動3を全部使う想定は破綻している。</div>
+<tr><td class="tier splus">S++</td><td><strong>供物</strong></td><td>ドロー＋エナジー。初動事故を減らし、攻防どちらにも接続。</td></tr>
+<tr><td class="tier splus">S++</td><td><strong>鬼火</strong></td><td>戦闘短縮＋廃棄起点。Duo倍率の受け皿。</td></tr>
+<tr><td class="tier splus">S++</td><td><strong>不動</strong></td><td>二連ボスでHPを残すための大型Block。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>ポンメルストライク</strong></td><td>Attack＋ドロー。序盤から終盤まで腐らない。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>身震い</strong></td><td>脆弱を相方まで利用。1～2枚で十分。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>焦熱の契約</strong></td><td>不要札処理＋ドロー。A10の高削除費とも相性良好。</td></tr>
+<tr><td class="tier s">S</td><td><strong>バトルトランス</strong></td><td>0コストで必要札へ掘る。</td></tr>
+<tr><td class="tier s">S</td><td><strong>瀉血</strong></td><td>爆発ターン生成。ただし自傷総額に注意。</td></tr>
+<tr><td class="tier s">S</td><td><strong>血の壁</strong></td><td>高効率Block。攻撃寄りでも守りを確保。</td></tr>
+<tr><td class="tier s">S</td><td><strong>アッパーカット</strong></td><td>脱力＋脆弱。サイレント不在時にさらに上昇。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>受け流し</strong></td><td>Block＋ドロー。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>旋風刃</strong></td><td>Act1 AoE。筋力・瀉血ありで終盤も強い。</td></tr>
+<tr><td class="tier a">A</td><td><strong>脳天割り</strong></td><td>Act1高打点。挟撃/ノックダウン等があると終盤再上昇。</td></tr>
+<tr><td class="tier a">A</td><td><strong>ごろつき</strong></td><td>弱体スタック構築なら高火力。</td></tr>
+<tr><td class="tier s">条件S++</td><td><strong>無痛</strong></td><td>廃棄をBlock化。鬼火/セカンドウィンド等が十分なら最上位。</td></tr>
+<tr><td class="tier s">条件S++</td><td><strong>闇の抱擁</strong></td><td>廃棄をドロー化。圧縮と回転を同時に実現。</td></tr>
+<tr><td class="tier s">条件S</td><td><strong>威圧</strong></td><td>frontload解決後の長期スケーリング。</td></tr>
+<tr><td class="tier b">B～A</td><td><strong>バリケード</strong></td><td>完成済みBlock型なら強いが、置くターンが重い。</td></tr>
+<tr><td class="tier b">B～A</td><td><strong>ボディスラム</strong></td><td>Blockエンジンが先。カードから軸を作らない。</td></tr>
+</tbody></table>
+<div class="mobile-tier">
+  <div class="tier-card"><div class="row"><span class="name">供物 / 鬼火 / 不動</span><span class="tag splus">S++</span></div><div class="why">初動、戦闘短縮、HP保全。二連ボスで最重要。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">ポンメル / 身震い / 焦熱の契約</span><span class="tag splus">S+</span></div><div class="why">回転・共有脆弱・不要札処理。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">バトルトランス / 瀉血 / 血の壁 / アッパーカット</span><span class="tag s">S</span></div><div class="why">爆発ターンと自己防御を補完。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">無痛 / 闇の抱擁</span><span class="tag s">条件S++</span></div><div class="why">廃棄土台ができてから取る。</div></div>
+</div>
+
+<h3 id="ic-combo">主要コンボ</h3>
+<ul>
+<li><strong>身震い → Duo倍率 → 鬼火/大技</strong></li>
+<li><strong>供物 → ポンメル → 瀉血 → フィニッシャー</strong></li>
+<li><strong>焦熱の契約＋無痛＋闇の抱擁</strong>：圧縮・Block・ドローを同時に行う。</li>
+</ul>
+
+<h3 id="ic-traps">罠</h3>
+<ul><li>Attack10枚以上の過積載</li><li>廃棄Payoff先行</li><li>バリケード先行</li><li>供物＋瀉血＋血の壁で自傷しすぎる</li></ul>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
+</section>
+
+<section id="silent">
+<h2>4. サイレント</h2>
+<div class="subnav">
+  <a href="#silent-build">理想デッキ</a><a href="#silent-tier">カード評価</a><a href="#silent-combo">コンボ</a><a href="#silent-traps">罠</a>
+</div>
+
+<h3 id="silent-build">理想デッキ：敵火力低下＋手札制御＋少量継続火力</h3>
+<p>20～28枚程度なら、Attack3～5、Weak/筋力低下3～5、Block3～5、ドロー/Discard5～8、保留1～2、独立火力2～4、Power1～3、Duo倍率0～1が目安。</p>
+<div class="callout"><strong>重要：</strong>完全サポートにはしない。毒を少量入れて、守っているターンにも敵HPが進む形が安定。</div>
+
+<h3 id="silent-tier">カード評価：A10 Duo / 二連ボス基準</h3>
+<table class="desktop-table">
+<thead><tr><th>Tier</th><th>カード</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td class="tier splus">S++</td><td><strong>金切り声</strong></td><td>多段攻撃を二人分まとめて軽減。A10 Duo最重要級。</td></tr>
+<tr><td class="tier splus">S++</td><td><strong>不快感</strong></td><td>長期戦の筋力低下＋脱力。ボス回答。</td></tr>
+<tr><td class="tier splus">S++</td><td><strong>用意周到</strong></td><td>危険ターン/キルターンまで必要札を保持。</td></tr>
+<tr><td class="tier splus">S++</td><td><strong>アドレナリン</strong></td><td>0コストのドロー＋エナジー。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>足払い</strong></td><td>Block＋長い脱力。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>挟撃</strong></td><td>相方の大型Attackを倍化。使うターンを選ぶ。</td></tr>
+<tr><td class="tier s">S</td><td><strong>バックフリップ</strong></td><td>Block＋ドロー。</td></tr>
+<tr><td class="tier s">S</td><td><strong>イカサマ</strong></td><td>0コスト手札再構成。初手事故対策。</td></tr>
+<tr><td class="tier s">S</td><td><strong>暴露</strong></td><td>脆弱供給・Artifact剥がし。アイクラ側で過剰なら低下。</td></tr>
+<tr><td class="tier s">S</td><td><strong>残像</strong></td><td>大量プレイ型の防御基盤。</td></tr>
+<tr><td class="tier s">S</td><td><strong>フットワーク</strong></td><td>二連ボスでBlock効率を底上げ。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>有毒ガス</strong></td><td>守っていても敵HPが減る。長期戦向き。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>リーディングストライク</strong></td><td>Act1のfrontload不足を補う。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>五月雨ダガー</strong></td><td>Act1 AoE。</td></tr>
+<tr><td class="tier s">条件S++</td><td><strong>促進剤</strong></td><td>毒が既に十分ならボス戦を短縮。</td></tr>
+<tr><td class="tier s">条件S</td><td><strong>精度上昇 / ナイフの罠</strong></td><td>ナイフ生成が成立してから。</td></tr>
+</tbody></table>
+<div class="mobile-tier">
+  <div class="tier-card"><div class="row"><span class="name">金切り声 / 不快感 / 用意周到 / アドレナリン</span><span class="tag splus">S++</span></div><div class="why">二連ボスのHP保全と初動を直接解決。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">足払い / 挟撃</span><span class="tag splus">S+</span></div><div class="why">危険ターン制御とキルターン増幅。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">バックフリップ / イカサマ / 暴露 / 残像 / フットワーク</span><span class="tag s">S</span></div><div class="why">回転・防御・共有倍率。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">促進剤</span><span class="tag s">条件S++</span></div><div class="why">毒がある時だけ最上位。</div></div>
+</div>
+
+<h3 id="silent-combo">主要コンボ</h3>
+<ul>
+<li><strong>金切り声 → 相方完全攻撃</strong></li>
+<li><strong>用意周到＋挟撃 → 相方大技まで保持</strong></li>
+<li><strong>不快感 → 長期戦の敵DPSを破壊</strong></li>
+<li><strong>有毒ガス＋高品質毒源＋促進剤</strong>：少量毒で十分。</li>
+</ul>
+
+<h3 id="silent-traps">罠</h3>
+<ul><li>防御過多でAct1火力不足</li><li>完全サポート化</li><li>毒カードを6～8枚積む</li><li>ナイフPayoffだけ先に取る</li></ul>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
+</section>
+
+<section id="regent">
+<h2>5. リージェント</h2>
+<div class="subnav">
+  <a href="#reg-build">理想デッキ</a><a href="#reg-economy">星経済</a><a href="#reg-tier">カード評価</a><a href="#reg-combo">コンボ</a><a href="#reg-traps">罠</a>
+</div>
+
+<h3 id="reg-build">理想デッキ：星ミッドレンジ</h3>
+<p>20～25枚程度なら、通常Attack3～5、星生成3～5、星消費2～4、Block4～6、脱力/弱体1～3、ドロー/山札操作3～5、Power1～3が目安。</p>
+<div class="callout good"><strong>目標：</strong>毎ターン15～25Blockしながら20～30ダメージ進める。派手な100ダメージコンボよりA10ではこの地味な再現性が強い。</div>
+
+<h3 id="reg-economy">星経済</h3>
+<ul>
+<li><strong>星生成≧星消費</strong>にする。</li>
+<li>「カード枚数」ではなく<strong>山札一周で何スター作れて何スター使うか</strong>で計算。</li>
+<li>Blockを星で処理し、通常エナジーをAttack/Powerへ回す。</li>
+</ul>
+
+<h3 id="reg-tier">カード評価</h3>
+<table class="desktop-table">
+<thead><tr><th>Tier</th><th>カード</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td class="tier splus">S++</td><td><strong>専制</strong></td><td>毎ターンドロー＋不要札処理。星生成/消費の引き順事故を激減。</td></tr>
+<tr><td class="tier splus">S++</td><td><strong>反射</strong></td><td>大型Block＋反射。二連ボスのHP保全に最適。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>光の集約</strong></td><td>Blockしながら次ターンの星を作る。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>星の外套</strong></td><td>0エナジー防御。通常エナジーを温存。</td></tr>
+<tr><td class="tier splus">S+</td><td><strong>フォトンカット</strong></td><td>Attack＋ドロー/山札操作。</td></tr>
+<tr><td class="tier s">S</td><td><strong>落星</strong></td><td>脱力＋弱体。Duo共有価値が高い。</td></tr>
+<tr><td class="tier s">S</td><td><strong>身の程を知れ</strong></td><td>0コストで仕事し、星/エナジー温存。</td></tr>
+<tr><td class="tier s">S</td><td><strong>煌めく激流</strong></td><td>今＋次ターンを守る。</td></tr>
+<tr><td class="tier s">S</td><td><strong>星の巡り</strong></td><td>星余剰を通常エナジーへ変換。</td></tr>
+<tr><td class="tier s">S</td><td><strong>突撃せよ！</strong></td><td>弱い基本札や状態異常を火力化。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>衝突軌道</strong></td><td>Act1 frontload。後半はデブリ処理が必要。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>星霊の波動</strong></td><td>Act1 AoE、筋力と好相性。</td></tr>
+<tr><td class="tier a">A+</td><td><strong>ノックアウト</strong></td><td>Act1エリート向け。</td></tr>
+<tr><td class="tier s">条件S++</td><td><strong>ロイヤルギャンブル</strong></td><td>星生成土台がある時。電気エビ付きなら別格。</td></tr>
+<tr><td class="tier s">条件S++</td><td><strong>虚無化</strong></td><td>安全なセットアップターンがある場合のみ。</td></tr>
+<tr><td class="tier s">条件S</td><td><strong>武器庫 / クエーサー / スペクトラムシフト</strong></td><td>生成軸が既に成立している時。</td></tr>
+</tbody></table>
+<div class="mobile-tier">
+  <div class="tier-card"><div class="row"><span class="name">専制 / 反射</span><span class="tag splus">S++</span></div><div class="why">引き順事故とHP損失を最も直接的に減らす。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">光の集約 / 星の外套 / フォトンカット</span><span class="tag splus">S+</span></div><div class="why">星を作りながら守り、通常エナジーを温存。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">落星 / 身の程を知れ / 煌めく激流 / 星の巡り</span><span class="tag s">S</span></div><div class="why">制御と星経済の土台。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">ロイヤルギャンブル / 虚無化</span><span class="tag s">条件S++</span></div><div class="why">土台がある時だけ最上位。先行ピックは危険。</div></div>
+</div>
+
+<h3 id="reg-combo">主要コンボ</h3>
+<ul>
+<li><strong>落星 → 相方の脆弱 → 全力Attack</strong></li>
+<li><strong>光の集約 → 星の外套/反射</strong>：星で守り、通常エナジーを温存。</li>
+<li><strong>専制＋突撃せよ！</strong>：戦闘中にデッキを高品質化。</li>
+<li><strong>ロイヤルギャンブル → 星消費札</strong></li>
+<li><strong>武器庫＋生成</strong>：成立後のみ筋力エンジン化。</li>
+</ul>
+
+<h3 id="reg-traps">罠</h3>
+<ul><li>星消費札を取りすぎる</li><li>ロイヤルギャンブル先行</li><li>武器庫先行</li><li>虚無化を安全に置けない</li><li>Act1から防御/Powerだけ取る</li></ul>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
+</section>
+
+<section id="pairing">
+<h2>6. ペア別運用</h2>
+<div class="subnav">
+  <a href="#pair-is">アイクラ＋サイレント</a><a href="#pair-ir">アイクラ＋リージェント</a><a href="#pair-ss">ダブルサイレント</a><a href="#pair-ii">ダブルアイクラ</a>
+</div>
+
+<h3 id="pair-is">アイクラ＋サイレント</h3>
+<p><strong>Silentが敵を止め、Cladが殺す。</strong></p>
+<ul><li>サイレント：金切り声/不快感/用意周到/挟撃</li><li>アイクラ：身震い/供物/ポンメル/鬼火</li></ul>
+
+<h3 id="pair-ir">アイクラ＋リージェント</h3>
+<p><strong>Regentが自分を安く守って盤面を安定させ、Cladが殺す。</strong></p>
+<ul><li>リージェント：落星/光の集約/反射/専制</li><li>アイクラ：脆弱＋frontload</li></ul>
+
+<h3 id="pair-ss">ダブルサイレント</h3>
+<p>一人frontload、一人制御/毒。二人とも防御過多にしない。</p>
+
+<h3 id="pair-ii">ダブルアイクラ</h3>
+<p>一人テンポ、一人制御/廃棄。脱力不足を無色やアッパーカットで補う。</p>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
 <section id="colorless">
-<h2>無色カード評価</h2>
-<table>
+<h2>7. 無色カード評価</h2>
+<div class="subnav"><a href="#cl-top">最優先</a><a href="#cl-context">構成依存</a></div>
+<table class="desktop-table">
 <thead><tr><th>カード</th><th>ダブルアイクラ</th><th>ダブルサイレント</th><th>要点</th></tr></thead>
 <tbody>
-<tr><td><strong>衝撃波</strong></td><td class="tier splus">S++</td><td class="tier s">S</td><td>全体弱体＋脱力。アイクラ不足の脱力を解決。</td></tr>
-<tr><td><strong>拳闘</strong></td><td class="tier splus">S++</td><td class="tier a">A+</td><td>AttackとBlockを同時に行い、アイクラの攻撃倍率と好相性。</td></tr>
-<tr><td><strong>ノックダウン</strong></td><td class="tier splus">S++</td><td class="tier a">A～S</td><td>相方から受けるダメージ倍化。大型Attackの受け皿。</td></tr>
-<tr><td><strong>シーカーストライク</strong></td><td class="tier s">S</td><td class="tier splus">S+</td><td>Attack＋限定サーチ。必要札アクセス。</td></tr>
-<tr><td><strong>共鳴の手斧</strong></td><td class="tier a">A+</td><td class="tier s">S</td><td>毎ターン安定Attack。サイレントのfrontload補強。</td></tr>
-<tr><td><strong>劇的な入場</strong></td><td class="tier a">A+</td><td class="tier s">S(Act1)</td><td>天賦0コストAoE。Silent序盤を救う。</td></tr>
-<tr><td><strong>四方斬り</strong></td><td class="tier s">S</td><td class="tier a">A+～S</td><td>0コストAoE。脆弱・筋力とも好相性。</td></tr>
-<tr><td><strong>究極のストライク</strong></td><td class="tier s">S序盤</td><td class="tier s">S序盤</td><td>シナジー不要のfrontload。</td></tr>
-<tr><td><strong>闇の足枷</strong></td><td class="tier s">S</td><td class="tier b">B～A</td><td>アイクラに不足する筋力低下を補完。</td></tr>
-<tr><td><strong>失せよ！</strong></td><td class="tier s">S(廃棄)</td><td class="tier a">A</td><td>不要札を戦闘中に処理。廃棄シナジーあり。</td></tr>
-<tr><td><strong>作戦会議</strong></td><td class="tier s">S</td><td class="tier s">A+～S</td><td>Duo全員ドロー。手札上限注意。</td></tr>
-<tr><td><strong>総攻撃</strong></td><td class="tier a">A</td><td class="tier s">S(多段)</td><td>相方のAttack回数を参照。ナイフ型で特に強い。</td></tr>
-<tr><td><strong>お前を信じる</strong></td><td class="tier s">A+～S</td><td class="tier s">A+～S</td><td>相方へエナジー供給。ドローがある側へ。</td></tr>
-</tbody>
-</table>
+<tr id="cl-top"><td><strong>衝撃波</strong></td><td class="tier splus">S++</td><td class="tier s">S</td><td>全体弱体＋脱力。アイクラ不足の脱力を解決。</td></tr>
+<tr><td><strong>拳闘</strong></td><td class="tier splus">S++</td><td class="tier a">A+</td><td>Attack＋Block。</td></tr>
+<tr><td><strong>ノックダウン</strong></td><td class="tier splus">S++</td><td class="tier a">A～S</td><td>相方の大型Attackを倍化。</td></tr>
+<tr><td><strong>シーカーストライク</strong></td><td class="tier s">S</td><td class="tier splus">S+</td><td>Attack＋限定サーチ。</td></tr>
+<tr><td><strong>劇的な入場</strong></td><td class="tier a">A+</td><td class="tier s">S(Act1)</td><td>天賦0コストAoE。</td></tr>
+<tr><td><strong>闇の足枷</strong></td><td class="tier s">S</td><td class="tier b">B～A</td><td>筋力低下。</td></tr>
+<tr id="cl-context"><td><strong>総攻撃</strong></td><td class="tier a">A</td><td class="tier s">S(多段)</td><td>相方のAttack回数参照。</td></tr>
+<tr><td><strong>お前を信じる</strong></td><td class="tier s">A+～S</td><td class="tier s">A+～S</td><td>相方へエナジー。</td></tr>
+</tbody></table>
+<div class="mobile-tier">
+  <div class="tier-card"><div class="row"><span class="name">衝撃波 / 拳闘 / ノックダウン</span><span class="tag splus">最優先</span></div><div class="why">特にダブルアイクラで非常に強い。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">シーカーストライク / 劇的な入場 / 闇の足枷</span><span class="tag s">高評価</span></div><div class="why">サーチ、Act1火力、筋力低下を補う。</div></div>
+</div>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
 <section id="shop">
-<h2>ショップ・ゴールド管理</h2>
-<div class="callout good"><strong>ショップ＝削除所ではない。</strong>「今できないこと」をゴールドで解決し、余剰金で削除してデッキを洗練する。</div>
-<h3>購入優先順位</h3>
+<h2>8. ショップ・ゴールド管理</h2>
+<div class="subnav"><a href="#shop-priority">優先順位</a><a href="#shop-money">所持金</a><a href="#shop-remove">削除</a></div>
+<div id="shop-priority" class="callout good"><strong>ショップ＝削除所ではない。</strong>まず不足機能を買い、余った金で削除。</div>
 <ol>
-<li>ランを直接救うレリック</li>
-<li>不足機能を埋める強カード</li>
-<li>次の危険戦用ポーション</li>
-<li>強い無色カード</li>
-<li>カード削除</li>
-<li>微妙なカード/レリック</li>
+<li>ランを直接救うレリック</li><li>不足機能を埋めるカード</li><li>次の危険戦用ポーション</li><li>強い無色</li><li>削除</li>
 </ol>
-<h3>持ち金の目安</h3>
-<table><thead><tr><th>所持金</th><th>判断</th></tr></thead><tbody>
-<tr><td>～100G</td><td>ルート上なら見るが、積極的ショップ目的には弱い。</td></tr>
-<tr><td>150G前後</td><td>強アンコモン＋ポーション等が可能。</td></tr>
-<tr><td>200～250G</td><td>最も入りたい。レリック/Rare/無色/削除を比較できる。</td></tr>
-<tr><td>300G以上</td><td>レリック＋カードなど複数購入可能。無駄買いは避ける。</td></tr>
-</tbody></table>
-<h3>削除</h3>
-<p>A10では削除費用が100→150→200→250…と重くなる。<strong>1回目は普通、2回目は慎重、3回目以降は特殊理由がない限り低優先</strong>。</p>
-<ul>
-<li>アイアンクラッド：焦熱の契約・セカンドウィンド・鬼火で戦闘中に不要札処理が可能なので削除優先度低め。</li>
-<li>サイレント：ストライク削除価値は比較的高いが、金切り声などの即戦力があるならカード購入優先。</li>
-<li>リージェント：専制・突撃せよ！により不要札を処理できるなら削除を急がない。</li>
-</ul>
-<h3>Act別</h3>
-<ul>
-<li><strong>Act1前半：</strong>削除しない。強カード＋ポーション。</li>
-<li><strong>Act1後半：</strong>200G以上ならショップ価値高。何もなければ初回削除。</li>
-<li><strong>Act2：</strong>150～250Gで入り、デッキの弱点を解決。</li>
-<li><strong>Act3：</strong>二連ボス用にゴールドを戦闘力へ変換。最終ショップはほぼ使い切る。</li>
-</ul>
+<h3 id="shop-money">所持金</h3>
+<ul><li>～100G：積極的ショップ目的には弱い</li><li>150G：強アンコモン＋ポーション</li><li>200～250G：最も入りたい</li><li>300G以上：複数購入可能</li></ul>
+<h3 id="shop-remove">削除</h3>
+<p>A10では100→150→200→250…と重い。1回目は普通、2回目慎重、3回目以降低優先。</p>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
 <section id="events">
-<h2>重要「？」イベント対応</h2>
-<table>
-<thead><tr><th>イベント</th><th>基本方針</th><th>判断ポイント</th></tr></thead>
+<h2>9. 重要「？」イベント</h2>
+<div class="subnav"><a href="#ev-high">高重要度</a><a href="#ev-act3">Act3</a></div>
+<table class="desktop-table">
+<thead><tr><th>イベント</th><th>基本方針</th></tr></thead>
 <tbody>
-<tr><td><strong>滑りやすい橋</strong></td><td>弱いカードが出るまで数回粘る</td><td>3～5HP程度は比較的払いやすい。良札保護に10HP超は慎重。</td></tr>
-<tr><td><strong>こっちか、そっちか？</strong></td><td>レリック＋不器用寄り</td><td>薄いデッキ、呪いに弱い、ドロー不足ならゴールド側。</td></tr>
-<tr><td><strong>自己啓発本</strong></td><td>迅速/身軽を高評価</td><td>毎戦出すPowerへの迅速が強い。多段なら鋭利。</td></tr>
-<tr><td><strong>真実の石板</strong></td><td>1～2回解読</td><td>3回目以降は最大HP減少が急増。A10二連ボスを忘れない。</td></tr>
-<tr><td><strong>光と闇の扉</strong></td><td>削除をやや高評価</td><td>A10の高削除費用を踏まえる。良札だらけなら2ランダムUG。</td></tr>
-<tr><td><strong>水没した宝物庫</strong></td><td>300G＋強欲を積極評価</td><td>焦熱の契約/専制があれば呪い処理しやすい。</td></tr>
-<tr><td><strong>アマルガメーター</strong></td><td>基本カード2枚を融合</td><td>ストライク/防御のどちらがより腐っているかで決める。</td></tr>
-<tr><td><strong>人型の穴</strong></td><td>基本「自分の穴」</td><td>行動制限呪いは危険。完璧な適合は毎周早く欲しい札へ。</td></tr>
-<tr><td><strong>巨大な花</strong></td><td>HP余裕なら中心核</td><td>18HPでレリックを買う感覚。直後のエリート/ボスを確認。</td></tr>
-<tr><td><strong>ウォンゴズ</strong></td><td>100Gコモン/200G表示Rareを評価</td><td>300Gは5戦確保できるなら強い。</td></tr>
-<tr><td><strong>長老ランウィッド</strong></td><td>不要ポーション→レリック</td><td>弱レリック→2レリックも強い。重要レリック要求なら断る。</td></tr>
-<tr><td><strong>キノコに夢中</strong></td><td>通常15HP→2枚UG</td><td>初手ドロー-2はA10で非常に危険。</td></tr>
-<tr><td><strong>水浸しの写字室</strong></td><td>保留付与も高評価</td><td>リージェントの反射/ロイヤルギャンブル等に特に有効。</td></tr>
-</tbody>
-</table>
+<tr id="ev-high"><td><strong>滑りやすい橋</strong></td><td>弱いカードが出るまで数回粘る。3～5HP程度は払いやすい。</td></tr>
+<tr><td><strong>自己啓発本</strong></td><td>迅速/身軽を高評価。重要Powerへの迅速が強い。</td></tr>
+<tr><td><strong>真実の石板</strong></td><td>1～2回解読。最大HPを欲張りすぎない。</td></tr>
+<tr><td><strong>光と闇の扉</strong></td><td>削除をやや高評価。</td></tr>
+<tr><td><strong>水没した宝物庫</strong></td><td>呪い処理できるなら300G＋強欲を高評価。</td></tr>
+<tr><td><strong>アマルガメーター</strong></td><td>より腐っている基本カード側を融合。</td></tr>
+<tr><td><strong>巨大な花</strong></td><td>18HPでレリックを買う感覚。</td></tr>
+<tr id="ev-act3"><td><strong>キノコに夢中</strong></td><td>A10では初手-2を避け、15HP→2枚UG寄り。</td></tr>
+<tr><td><strong>水浸しの写字室</strong></td><td>リージェントの反射/ロイヤルギャンブル等への保留が強い。</td></tr>
+</tbody></table>
+<div class="mobile-tier">
+  <div class="tier-card"><div class="row"><span class="name">滑りやすい橋</span><span class="tag s">高重要</span></div><div class="why">HP少量で基本札削除を狙う。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">水没した宝物庫</span><span class="tag s">高重要</span></div><div class="why">呪い処理可能なら300G側が強い。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">真実の石板</span><span class="tag a">慎重</span></div><div class="why">1～2回は強いが最大HPを削りすぎない。</div></div>
+</div>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
-
 
 <section id="ancients">
-<h2>アンシェント報酬の優先度</h2>
-<div class="callout good"><strong>基本方針：</strong>アンシェント報酬は「単体で強いか」より、現在のデッキが抱えている構造的な欠点を消せるかで評価する。A10 Duoでは、初動・ドロー・エナジー・デバフ・状態異常処理を改善する報酬を高く見る。</div>
-
-<h3>優先順位の考え方</h3>
-<ol>
-<li><strong>初動を変える報酬</strong>：戦闘開始時に自動展開、天賦、ドロー、エナジー、追加リソース。</li>
-<li><strong>構造的欠点を消す報酬</strong>：アイクラの脱力不足、サイレントのAct1火力不足、リージェントのスター不足など。</li>
-<li><strong>毎戦必ず働く報酬</strong>：特定コンボ時だけ強いものより、通常戦・エリート・ボスすべてで価値があるもの。</li>
-<li><strong>Duo全体へ波及する報酬</strong>：弱体・脆弱・筋力低下・ドロー・エナジーなど、相方のターンまで強くするもの。</li>
-</ol>
-
-<h3>この3キャラでの評価軸</h3>
-<table>
-<thead><tr><th>キャラ</th><th>特に欲しい報酬</th><th>評価を下げる報酬</th></tr></thead>
+<h2>10. アンシェント報酬・電気エビ</h2>
+<div class="subnav"><a href="#ancient-rule">選び方</a><a href="#shrimp">電気エビ</a></div>
+<div id="ancient-rule" class="callout"><strong>優先：</strong>初動を変える報酬 ＞ 構造的欠点を消す報酬 ＞ 毎戦働く報酬 ＞ 特定コンボ限定報酬。</div>
+<h3 id="shrimp">電気エビ</h3>
+<table class="desktop-table">
+<thead><tr><th>キャラ</th><th>最優先</th><th>次点</th></tr></thead>
 <tbody>
-<tr><td><strong>アイアンクラッド</strong></td><td>初手防御、ドロー、脱力補助、廃棄加速、重いカードの踏み倒し</td><td>さらに自傷だけ増やすもの、遅いPower専用、過剰な防御専用</td></tr>
-<tr><td><strong>サイレント</strong></td><td>初手火力、筋力低下、Xコスト踏み倒し、ドロー、保留・手札調整</td><td>防御だけ増えて火力不足を悪化させるもの</td></tr>
-<tr><td><strong>リージェント</strong></td><td>スター供給、通常エナジー補助、初手防御、生成・鍛造の起動短縮</td><td>スター消費札だけ増やすもの、さらにセットアップを要求するもの</td></tr>
-</tbody>
-</table>
-
-<h3>報酬選択の実戦ルール</h3>
-<div class="grid2">
-<div class="card">
-<h4>即取り寄り</h4>
-<ul>
-<li>戦闘開始時から毎戦機能する</li>
-<li>二連ボス両方で再利用できる</li>
-<li>ドロー/エナジー/追加リソースを無償で増やす</li>
-<li>普段払っている高コストを踏み倒す</li>
-<li>相方の攻防まで改善する</li>
-</ul>
+<tr><td><strong>アイアンクラッド</strong></td><td>未だ倒れず / 不動</td><td>カスケード</td></tr>
+<tr><td><strong>サイレント</strong></td><td>不快感</td><td>バレットタイム / バースト</td></tr>
+<tr><td><strong>リージェント</strong></td><td>ロイヤルギャンブル</td><td>反射 / 鍛冶師</td></tr>
+</tbody></table>
+<div class="mobile-tier">
+  <div class="tier-card"><div class="row"><span class="name">リージェント：ロイヤルギャンブル</span><span class="tag splus">S++</span></div><div class="why">星不足という構造的欠点を戦闘開始時から消す。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">サイレント：不快感</span><span class="tag splus">S++</span></div><div class="why">Xコスト無料発動で敵火力を初手から下げる。</div></div>
+  <div class="tier-card"><div class="row"><span class="name">アイクラ：未だ倒れず / 不動</span><span class="tag splus">S+</span></div><div class="why">高コスト防御を無料化し攻撃へエナジーを回す。</div></div>
 </div>
-<div class="card">
-<h4>構成依存</h4>
-<ul>
-<li>鍛造、毒、廃棄、生成など特定軸が既に成立</li>
-<li>特定カード1枚だけを強くする</li>
-<li>Act1では遅いがAct3では強い</li>
-<li>現在のスター/エナジー収支次第</li>
-</ul>
-</div>
-</div>
-
-<div class="callout warn"><strong>A10での注意：</strong>最大出力を上げる報酬より、初手事故を減らす報酬の方が勝率に直結しやすい。特にAct3二連ボスでは、毎戦のTurn1～2を安定させる報酬を優先する。</div>
-</section>
-
-<section id="shrimp">
-<h2>電気エビ：誰のどのスキルに付けるか</h2>
-<p>電気エビは、<strong>戦闘開始時に自動で無料プレイされて最も得をするスキル</strong>へ付ける。高コスト、Xコスト、スター等の追加リソース要求、毎戦必ず使いたいスキルほど価値が高い。</p>
-
-<h3>総合優先度</h3>
-<table>
-<thead><tr><th>優先</th><th>キャラ</th><th>候補</th><th>理由</th></tr></thead>
-<tbody>
-<tr><td class="tier splus">S++</td><td><strong>リージェント</strong></td><td><strong>ロイヤルギャンブル</strong></td><td>スター要求を踏み倒して戦闘開始時から大量スターを確保。リージェント最大の弱点である「星が貯まるまで弱い」を消す。</td></tr>
-<tr><td class="tier splus">S++</td><td><strong>サイレント</strong></td><td><strong>不快感</strong></td><td>Xコストを開始エナジー分で無料発動。ボス・多段敵の筋力を初手から下げ、Duo全体の被害を大幅軽減。</td></tr>
-<tr><td class="tier splus">S+</td><td><strong>アイアンクラッド</strong></td><td><strong>未だ倒れず / 不動</strong></td><td>高コスト防御を無料化。アイクラの通常エナジーを攻撃へ回せる。</td></tr>
-<tr><td class="tier s">S</td><td><strong>リージェント</strong></td><td><strong>反射</strong></td><td>スター消費を踏み倒し、戦闘開始時から大型Block＋反射。</td></tr>
-<tr><td class="tier s">S</td><td><strong>サイレント</strong></td><td><strong>バレットタイム</strong></td><td>重い手札展開を初手から無料化。手札構成が合う場合に非常に強い。</td></tr>
-<tr><td class="tier a">A～S</td><td><strong>リージェント</strong></td><td><strong>鍛冶師</strong></td><td>鍛造軸が成立しているならTurn1からエンジン開始。</td></tr>
-<tr><td class="tier a">A</td><td><strong>サイレント</strong></td><td><strong>バースト</strong></td><td>次のSkill二重化が明確に強い構成なら有効。自動発動順に注意。</td></tr>
-</tbody>
-</table>
-
-<h3>アイアンクラッド</h3>
-<div class="callout">
-<strong>第一候補：未だ倒れず / 不動</strong><br>
-重い防御札を初手で完全無料化し、そのターンの通常エナジーを身震い・ポンメルストライク・大型Attackへ回す。A10のTurn1事故を減らす目的で非常に優秀。
-</div>
-<ul>
-<li><strong>未だ倒れず：</strong>高コストゆえ踏み倒し価値が最大。</li>
-<li><strong>不動：</strong>初手大型Blockを確定し、攻撃に専念できる。</li>
-<li><strong>カスケード：</strong>高コストで毎戦使いたい構成なら有力。</li>
-</ul>
-<div class="callout bad"><strong>もったいない：</strong>受け流しや血の壁など、普通に1コストで使えるカード。電気エビは「本来出しづらいカード」を無料化するほど価値が高い。</div>
-
-<h3>サイレント</h3>
-<div class="callout good">
-<strong>第一候補：不快感</strong><br>
-Xコストを開始エナジー相当で無料発動し、戦闘開始時から敵の筋力を落とす。Duoでは二人分の被害を減らすため、実質的な価値が非常に高い。
-</div>
-<p>特に多段攻撃ボスや長期戦では、初手から不快感が入っているだけで、その後の防御要求が大きく下がる。</p>
-<ul>
-<li><strong>不快感：</strong>S++。最も再現性が高い。</li>
-<li><strong>バレットタイム：</strong>高コスト手札展開型ならS。</li>
-<li><strong>バースト：</strong>次に使うSkillを明確に二重化したい構成ならA～S。</li>
-</ul>
-
-<h3>リージェント</h3>
-<div class="callout good">
-<strong>第一候補：ロイヤルギャンブル</strong><br>
-通常ならスターを事前に貯める必要があるが、電気エビでその制約を踏み倒し、戦闘開始時から大量スターを確保できる。リージェントの構造的弱点そのものを消すため最優先級。
-</div>
-<p>その後すぐに、反射・粒子障壁・星霊の波動・星の巡り等へ接続できる。アイクラ＋リージェントでは、リージェントが星で自分を守り、アイクラが通常エナジーを完全に攻撃へ回せる。</p>
-<ul>
-<li><strong>ロイヤルギャンブル：</strong>S++。スター経済を一気に起動。</li>
-<li><strong>反射：</strong>S。初手安全性を最優先したい場合。</li>
-<li><strong>鍛冶師：</strong>鍛造軸が既に成立しているならA～S。</li>
-<li><strong>悩ましい選択 / 城壁：</strong>毎戦確実に使う高コスト防御・セットアップとして有効な場合。</li>
-</ul>
-
-<h3>電気エビの選択ルール</h3>
-<ol>
-<li><strong>Xコスト</strong></li>
-<li><strong>3コスト以上</strong></li>
-<li><strong>スター等の追加リソース要求</strong></li>
-<li><strong>戦闘開始時ほど価値が高い</strong></li>
-<li><strong>毎戦必ず使いたい</strong></li>
-</ol>
-<div class="callout"><strong>この3キャラでの簡易順位：</strong><br>
-ロイヤルギャンブル ≳ 不快感 ＞ 未だ倒れず / 不動 ＞ 反射 ＞ バレットタイム ＞ 鍛冶師
-</div>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
 <section id="elites">
-<h2>要注意エリート</h2>
-<h3>Act1：繁茂</h3>
-<div class="grid3">
-<div class="card"><h4>ビャードニス</h4><p><strong>火力チェック。</strong>長引くほど筋力が増え多段が危険。3～4ターンで倒す。</p></div>
-<div class="card"><h4>古の偶像</h4><p><strong>少数高出力カード。</strong>小さいカード連打より大型Attack。Turn3以降も30/turn程度なら避ける。</p></div>
-<div class="card"><h4>寄生カエル</h4><p><strong>AoE要求。</strong>本体後の小型4体を旋風刃/星霊の波動等で早期処理。</p></div>
-</div>
-<h3>Act1：地下水路</h3>
-<div class="grid3">
-<div class="card"><h4>テラーウツボ</h4><p>HP閾値を跨いだ後の<strong>スタンターンで殺し切る</strong>。弱いタイミングで閾値を踏まない。</p></div>
-<div class="card"><h4>蠢く群生体</h4><p>1ターンの削り上限あり。大型バーストの無駄撃ち禁止。ドロー・状態異常処理が重要。</p></div>
-<div class="card"><h4>幻影蟲</h4><p>均等削りせず<strong>4→3→2→1</strong>と集中処理。単発大打点が有利。</p></div>
-</div>
-<h3>Act2</h3>
-<div class="grid3">
-<div class="card"><h4>デシミリピード</h4><p>AoEを散らさず同じセグメントへ集中。単体高打点ペアなら比較的得意。</p></div>
-<div class="card"><h4>エントマンサー</h4><p><strong>最重要警戒。</strong>小Attack連打が山札を汚す。大型Attack＋焦熱の契約/専制などの状態異常処理。</p></div>
-<div class="card"><h4>感染プリズム</h4><p>毎ターン最初にAttackして追加エナジーを得る。Attack→Block/Powerの順。</p></div>
-</div>
-<h3>Act3</h3>
-<div class="grid3">
-<div class="card"><h4>メカナイト</h4><p><strong>最高危険。</strong>Artifactを安価に剥がせないデバフ依存デッキは避ける。</p></div>
-<div class="card"><h4>騎士3体</h4><p>Power依存ならマギ・ナイト優先。敵数を早く減らす。</p></div>
-<div class="card"><h4>ソウルネクサス</h4><p>Turn1大打点への耐性チェック。初手事故でも処理できるかを踏む前に確認。</p></div>
-</div>
-</section>
-
-<section id="elite-route">
-<h2>エリートを踏むかどうか</h2>
-<table>
-<thead><tr><th>Act</th><th>目安</th><th>思想</th></tr></thead>
-<tbody>
-<tr><td>Act1</td><td><strong>1～2体、強ければ2～3体</strong></td><td>レリックの複利が大きいので最も踏みたい。</td></tr>
-<tr><td>Act2</td><td><strong>0～2体</strong></td><td>相性確認。最悪候補への回答がなければ回避。</td></tr>
-<tr><td>Act3</td><td><strong>0～1体</strong></td><td>A10二連ボス優先。「倒せる」より「何HP残るか」。</td></tr>
-</tbody>
-</table>
-<h3>GO / NO-GO</h3>
+<h2>11. エリート攻略・踏む判断</h2>
+<div class="subnav"><a href="#elite-a1">Act1</a><a href="#elite-a2">Act2</a><a href="#elite-a3">Act3</a><a href="#elite-go">GO/NO-GO</a></div>
+<h3 id="elite-a1">Act1</h3>
+<ul><li><strong>ビャードニス：</strong>火力チェック。3～4ターンで倒す。</li><li><strong>古の偶像：</strong>少数高出力カード向け。</li><li><strong>寄生カエル：</strong>AoE要求。</li><li><strong>テラーウツボ：</strong>閾値を跨いだスタンターンで殺す。</li></ul>
+<h3 id="elite-a2">Act2</h3>
+<ul><li><strong>エントマンサー：</strong>最警戒。小Attack連打＋状態異常処理なしなら回避。</li><li><strong>デシミリピード：</strong>単体集中。</li><li><strong>感染プリズム：</strong>毎ターン最初にAttack。</li></ul>
+<h3 id="elite-a3">Act3</h3>
+<ul><li><strong>メカナイト：</strong>最高危険。Artifactを剥がせないなら避ける。</li><li><strong>騎士3体：</strong>Power依存ならマギ優先。</li><li><strong>ソウルネクサス：</strong>初手事故耐性チェック。</li></ul>
+<h3 id="elite-go">GO / NO-GO</h3>
 <div class="grid2">
-<div class="card">
-<h3 style="color:var(--good)">GO</h3>
-<ul>
-<li>最悪のエリート候補への回答がある</li>
-<li>二人とも最低50～60%程度HP</li>
-<li>ポーション1本以上を使ってよい</li>
-<li>エリート後に休憩/ショップ/逃げ道</li>
-<li>通常引きでも火力が出る</li>
-</ul>
+<div class="card"><h4 style="color:var(--good)">GO</h4><ul><li>最悪候補への回答あり</li><li>HP50～60%以上</li><li>ポーション使用可</li><li>後ろに休憩/ショップ</li></ul></div>
+<div class="card"><h4 style="color:var(--bad)">NO-GO</h4><ul><li>敵候補を把握していない</li><li>片方が完全依存</li><li>Act3でHP損失が二連ボスに響く</li><li>ポーション絶対温存</li></ul></div>
 </div>
-<div class="card">
-<h3 style="color:var(--bad)">NO-GO</h3>
-<ul>
-<li>「多分勝てる」だけで敵候補を把握していない</li>
-<li>片方が完全に相方依存</li>
-<li>Act2エントマンサーに小Attackしかない</li>
-<li>Act3メカナイトのArtifactを剥がせない</li>
-<li>ポーションを絶対温存したい</li>
-<li>エリート後のHPが二連ボスへ響く</li>
-</ul>
-</div>
-</div>
-<div class="callout warn"><strong>HPは現在値ではなく「エリート後」で見る。</strong>さらにエリート後3マス（休憩、ショップ、通常戦、ボス）まで含めて判断する。</div>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
-<section id="turn">
-<h2>Duoのターン進行</h2>
-<p>カードを1枚も使う前に、毎ターンこれだけ共有する。</p>
-<div class="callout">
-<strong>例：</strong><br>
-A：最大42ダメージ、18Block、身震いあり。<br>
-B：31ダメージ、脱力あり、星座あり。<br>
-順番：Artifact剥がし → 身震い → Duo倍率 → 大技 → 残り処理。
-</div>
+<section id="bosses">
+<h2>12. A10二連ボス対策</h2>
+<div class="subnav"><a href="#boss-goal">目標</a><a href="#boss-ic">アイクラ</a><a href="#boss-silent">サイレント</a><a href="#boss-regent">リージェント</a></div>
+<div id="boss-goal" class="callout bad"><strong>第一ボスは「勝てるか」ではなく「HP15前後以内の損失で倒せるか」で考える。</strong></div>
+<h3>共通チェック</h3>
 <ol>
-<li>最大ダメージ</li>
-<li>最大Block</li>
-<li>弱体・脆弱・筋力低下</li>
-<li>挟撃・ノックダウン・タッグチーム等</li>
-<li>ポーション</li>
-<li>保留・エセリアル・手札上限</li>
-<li>今ターン倒す敵</li>
+<li>Turn1にPowerしかできない構成になっていないか</li>
+<li>40ダメージ予告への回答があるか</li>
+<li>4～6ターン程度で第一ボスを終えられるか</li>
+<li>第二ボスTurn1からまた動けるか</li>
 </ol>
-<div class="callout bad"><strong>典型事故：</strong>Artifactを剥がす前に本命デバフ、挟撃前にAttack、タッグチームをStrikeで消費、相方の手札満杯で全体ドロー。</div>
+<h3 id="boss-ic">アイアンクラッド</h3>
+<p>Act3では新しいAttackより<strong>供物・焦熱の契約・不動・受け流し</strong>を優先し、初動とHP保全を強化。</p>
+<h3 id="boss-silent">サイレント</h3>
+<p>追加毒より<strong>金切り声・不快感・用意周到・ドロー</strong>。第一戦でHPを残す。</p>
+<h3 id="boss-regent">リージェント</h3>
+<p>派手な星消費大技より<strong>専制・反射・光の集約・フォトンカット・星の外套</strong>で毎戦同じように動ける形を作る。</p>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
-<section id="checklist">
-<h2>A10 Duo 最終チェックリスト</h2>
-<div class="grid2">
-<div class="card"><h3>Act3突入時</h3><ul>
-<li>二人とも自己防御可能</li><li>弱体または筋力低下を安定供給</li><li>脆弱を安定供給</li><li>状態異常処理</li><li>Attack回数要求への回答</li><li>最初の山札一周でエンジン始動</li></ul></div>
-<div class="card"><h3>二連ボス前</h3><ul>
-<li>第一ボス用と第二ボス用ポーションを区別</li><li>第一ボスを低損害で倒せる</li><li>セットアップに5ターンかからない</li><li>初手事故でも致命傷を受けない</li><li>最後のショップでゴールドを戦闘力へ変換済み</li></ul></div>
-</div>
-<div class="callout good"><strong>最後に：</strong>特殊コンボは「二つの普通に強いデッキ」の上に乗せる。A10 Duoで勝つための基本は、各自が機能し、共有デバフとDuo倍率を必要なターンだけ集中させること。</div>
+<section id="turnflow">
+<h2>13. Duoターン進行</h2>
+<div class="subnav"><a href="#turn-share">共有</a><a href="#turn-order">順番</a></div>
+<h3 id="turn-share">毎ターン最初に共有</h3>
+<ol><li>最大ダメージ</li><li>最大Block</li><li>Weak/脆弱/筋力低下</li><li>Duo倍率</li><li>ポーション</li><li>保留/エセリアル/手札上限</li></ol>
+<h3 id="turn-order">基本順番</h3>
+<pre>Artifact剥がし
+→ 弱体 / 脆弱
+→ 挟撃 / ノックダウン / タッグチーム
+→ 主力Attack
+→ 残り処理</pre>
+<div class="callout warn"><strong>典型事故：</strong>本命デバフ前にArtifactを剥がしていない、挟撃前にAttack、タッグチームをStrikeで消費、相方手札満杯で全体ドロー。</div>
+<a class="backtop" href="#top">↑ 章ショートカットへ</a>
 </section>
 
 </main>
 </div>
+
 <footer>
-<p>本ページは会話内で整理したA10 Duo攻略情報を、実戦で参照しやすい形に再構成したものです。ゲームのパッチにより数値・カード効果・イベント仕様が変更される場合があります。</p>
+<p>会話内で整理したA10 Duo攻略を、実戦参照向けに章構成から再編集した版。パッチにより数値・カード効果・イベント仕様が変わる場合があります。</p>
 </footer>
 
 <script>
-const input=document.getElementById('search');
+const q=document.getElementById('search');
 const sections=[...document.querySelectorAll('main section')];
-input.addEventListener('input',()=>{
-  const q=input.value.trim().toLowerCase();
-  sections.forEach(s=>{
-    const hit=!q || s.innerText.toLowerCase().includes(q);
-    s.style.display=hit?'':'none';
+q.addEventListener('input',()=>{
+  const s=q.value.trim().toLowerCase();
+  sections.forEach(sec=>{
+    sec.classList.toggle('hidden', !!s && !sec.innerText.toLowerCase().includes(s));
   });
 });
 </script>
